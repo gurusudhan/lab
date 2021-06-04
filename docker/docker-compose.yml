@@ -1,9 +1,12 @@
-version: '3'
+version: "3.3"
 
 services:
-    base:
-        build: ./
-        volumes:
-            - .:/opt/base
-        container_name: dev
+  hello_container:
+    container_name: hello_contaier
+    build: .
 
+    volumes:
+      - .:/opt/base
+
+    environment:
+      SYS_NAME: good-container

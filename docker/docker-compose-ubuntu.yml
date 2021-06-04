@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    base:
+        build: ./
+        volumes:
+            - .:/opt/base
+        container_name: dev
+        
