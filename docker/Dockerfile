@@ -31,6 +31,6 @@ USER user:user
 
 WORKDIR /home/user
 
-# CMD [ "/bin/bash" ]
+CMD [ "bash"" ]
 
 ENTRYPOINT [ "/bin/bash" ]
