@@ -2,8 +2,10 @@ version: '3'
 
 services:
     base:
-        build: ./
+        container_name: python_dev
+        image: python:3
         volumes:
-            - .:/opt/base
-        container_name: dev
-        
+            - ~/base/space/gh:/opt/base
+        ports:
+            - 8080:8080
+        command: ['python3', '-m', 'http.server', '8080']
