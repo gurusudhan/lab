@@ -2,9 +2,44 @@
 
 
 # Cheat sheet
-
+**docker-cli**
 ```bash
 
+```
+
+**docker-build**
+
+**docker-compose**
+```yml
+version: "3"            # version of docker-compose.yaml file
+
+services:               # services definition
+  python:               # service name
+    container_name: dev_python          # container name
+    build:                              # build details
+        context: .                      # directory of build file
+        dockerfile: python-dockerfile   # build file
+    image: ubuntu:latest                # image details
+    stdin_open: true                    # docker run -i
+    tty: true                           # docker run -t
+    ports:                              # port mapping
+        - "8080:80"
+    volumes:                            # volume mappings - bind mount
+        - ~/base/:/opt/base/
+    networks:                           # networks section
+        - dev                           # network name
+    working_dir: /opt/base/             # change working directory
+    entrypoint: ["/bin/bash", "-c"]     # entry point
+    command:                            # command
+        - /bin/bash
+        - -c
+        - |
+            yes | apt-get install net-tools
+            yes | apt-get install vim
+
+networks:                               # networks definition
+    dev:                                # network name
+        driver: bridge                  # network detaiils
 ```
 
 # Tips
