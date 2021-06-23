@@ -1,0 +1,26 @@
+FROM ubuntu:latest
+
+RUN set -xe \
+    && apt-get update \
+    && apt-get install -y apt-utils tzdata locales
+ENV TZ=America/New_York
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+     && echo $TZ > /etc/timezone
+
+RUN yes | unminimize
+
+RUN set -xe &&\
+    apt-get update &&\
+    apt-get install -y net-tools &&\
+    apt-get install -y vim
+
+# RUN set -xe \
+#     && apt-get install -y vim perl wget tar man sudo adduser netstat-nat net-tools curl w3m  \
+#     && useradd -m -p "\$6\$AyOAQ1vh\$CcIXBW4cJopgUVKsTcxlGplUZ382K4yIxIAHhqmEewzJdc6x0MmbSDDQJ1DR.4eueGlYTf2ZbUl9oAQaUQEoi1" -s /bin/bash user \
+#     && usermod -aG sudo user \
+#     && echo "user ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/user \
+#     && chmod 0440 /etc/sudoers.d/user 
+
+# USER user:user
+
+# WORKDIR /home/user
