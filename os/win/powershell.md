@@ -21,6 +21,28 @@ Get script path
 $ScriptPath = Split-Path -parent $MyInvocation.MyCommand.Definition
 ```
 
+Working with environment variables
+```ps1
+# Set user system environment variable
+[System.Environment]::SetEnvironmentVariable('DATA','C:\data',[System.EnvironmentVariableTarget]::User)
+
+# Set machine system environment variable
+[System.Environment]::SetEnvironmentVariable('siteName','tachytelic.net',[System.EnvironmentVariableTarget]::Machine)
+
+# Set local variable
+$env:Data = 'C:\data'
+
+```
+
+Create directory if not exists
+```ps1
+$path = "C:\temp\NewFolder"
+If(!(test-path $path))
+{
+      New-Item -ItemType Directory -Force -Path $path
+}
+```
+
 Get Registry values
 ```ps1
 # get hostname from putty saved session
