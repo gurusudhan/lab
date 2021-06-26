@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-    base:
-        container_name: python_dev
+    python:
+        container_name: python
         image: python:3
         volumes:
             - ~/base/space/gh:/opt/base
@@ -12,15 +12,15 @@ services:
         networks: 
             - dev
     ubuntu:
-        container_name: ubuntu_dev
+        container_name: ubuntu
         image: ubuntu:latest
         volumes:
             - ~/base/space/gh:/opt/base
         networks: 
             - dev
-        # ports:
-        #     - 8081:8080
-        # command: ['python3', '-m', 'http.server', '8080']        
+        ports:
+            - 8081:8080
+        command: ['python3', '-m', 'http.server', '8080']
 
 networks:
     dev:
