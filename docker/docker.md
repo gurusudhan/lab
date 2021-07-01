@@ -52,14 +52,14 @@ services:               # services definition
         context: .                      # directory of build file
         dockerfile: python-dockerfile   # build file
     image: ubuntu:latest                # image details
-    stdin_open: true                    # docker run -i
-    tty: true                           # docker run -t
     ports:                              # port mapping
         - "8080:80"
     volumes:                            # volume mappings - bind mount
         - ~/base/:/opt/base/
     networks:                           # networks section
         - dev                           # network name
+    stdin_open: true                    # docker run -i
+    tty: true                           # docker run -t
     working_dir: /opt/base/             # change working directory
     entrypoint: ["/bin/bash", "-c"]     # entry point
     command:                            # command

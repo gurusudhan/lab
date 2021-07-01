@@ -6,11 +6,10 @@ services:
         image: python:3
         volumes:
             - ~/base/space/gh:/opt/base
-        ports:
-            - 8080:8080
-        command: ['python3', '-m', 'http.server', '8080']
         networks: 
             - dev
+        stdin_open: true
+        tty: true
     jupyter-notebook:
         container_name: jupyter-notebook
         image: jupyter/minimal-notebook
@@ -27,9 +26,17 @@ services:
             - ~/base/space/gh:/opt/base
         networks: 
             - dev
-        ports:
-            - 8081:8080
-        command: ['python3', '-m', 'http.server', '8080']
+        stdin_open: true
+        tty: true
+    golang:
+        container_name: golang
+        image: golang:latest
+        volumes:
+            - ~/base/space/gh:/opt/base
+        networks:
+            - dev
+        stdin_open: true
+        tty: true
 
 networks:
     dev:
