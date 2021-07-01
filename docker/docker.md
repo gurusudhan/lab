@@ -4,12 +4,26 @@
 # Cheat sheet
 **docker-cli**
 ```bash
+# use docker-compose to bring up one service
+docker-compose up -d jupyter-notebook
+docker-compose -f <custom-docker-compose.yml> up -d jupyter-notebook        # for using custom-docker-compose.yml file
 
+# attach to a container
+docker exec -it <container name> /bin/bash
+
+# stop a container
+docker-compose stop jupyter-notebook
+
+# inspect a container
+docker inspect jupyter-notebook
+
+# get logs from container
+docker logs jupyter-notebook
 ```
 
-**docker-build**
+**Dockerfile**
 
-**docker-compose**
+**docker-compose.yml**
 ```yml
 version: "3"            # version of docker-compose.yaml file
 
