@@ -1,12 +1,30 @@
 # Reference
+MCR - https://github.com/microsoft/containerregistry
+https://github.com/microsoft/vscode-dev-containers
 
+https://docs.docker.com/compose/faq/
+https://www.geeksforgeeks.org/difference-between-run-vs-cmd-vs-entrypoint-docker-commands/
+
+https://devhints.io/docker-compose
+
+https://hub.docker.com/
 
 # Cheat sheet
+
 **docker-cli**
 ```bash
 # use docker-compose to bring up one service
 docker-compose up -d jupyter-notebook
 docker-compose -f <custom-docker-compose.yml> up -d jupyter-notebook        # for using custom-docker-compose.yml file
+# start docker container
+docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+docker run -p 8080:8080 python:3 python3 -m http.server 8080
+docker run -it python:3 /bin/bash
+
+# run flags
+# working with images
+# working with containers
+# working with repositories
 
 # attach to a container
 docker exec -it <container name> /bin/bash
@@ -74,4 +92,15 @@ docker run -d -p 80:80 --name docker-tutorial docker101tutorial
 # share
 docker tag docker101tutorial {docker-user}/docker101tutorial
 docker push ${docker-user}/docker101tutorial
+```
+
+## Start docker app
+```bash
+# mac
+docker ps -q | xargs -L1 docker stop        # stop containers
+test -z "$(docker ps -q 2>/dev/null)" && osascript -e 'quit app "Docker"'   # stop docker app
+open --background -a Docker                 # start docker app
+
+# windows
+
 ```
