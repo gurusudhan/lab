@@ -10,8 +10,8 @@ services:
             - dev
         stdin_open: true
         tty: true
-    jupyter-notebook:
-        container_name: jupyter-notebook
+    jupyter:
+        container_name: jupyter
         image: jupyter/minimal-notebook
         volumes:
             - ~/base/space/gh:/home/jovyan/workspace
