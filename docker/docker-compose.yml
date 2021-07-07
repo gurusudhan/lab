@@ -3,9 +3,9 @@ version: '3'
 services:
     python:
         container_name: python
-        image: python:3
+        image: python:2
         volumes:
-            - ~/base/space/gh:/opt/base
+            - ~/base/space/:/opt/base
         networks: 
             - dev
         stdin_open: true
@@ -14,7 +14,7 @@ services:
         container_name: jupyter
         image: jupyter/minimal-notebook
         volumes:
-            - ~/base/space/gh:/home/jovyan/workspace
+            - ~/base/space/:/home/jovyan/workspace
         ports:
             - 8888:8888
         networks:
@@ -23,7 +23,7 @@ services:
         container_name: ubuntu
         image: ubuntu:latest
         volumes:
-            - ~/base/space/gh:/opt/base
+            - ~/base/space/:/opt/base
         networks: 
             - dev
         stdin_open: true
@@ -32,7 +32,7 @@ services:
         container_name: golang
         image: golang:latest
         volumes:
-            - ~/base/space/gh:/opt/base
+            - ~/base/space/:/opt/base
         networks:
             - dev
         stdin_open: true

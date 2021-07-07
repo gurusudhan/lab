@@ -99,7 +99,7 @@ docker push ${docker-user}/docker101tutorial
 # mac
 docker ps -q | xargs -L1 docker stop        # stop containers
 test -z "$(docker ps -q 2>/dev/null)" && osascript -e 'quit app "Docker"'   # stop docker app
-open --background -a Docker                 # start docker app
+/usr/bin/open --background -a Docker                 # start docker app
 
 # windows
 
