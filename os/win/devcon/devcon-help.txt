@@ -1,0 +1,20 @@
+WDK for Windows 10, version 1903 worked well for Windows 10 version 1909. To check the version, Start -> Settings -> Update & Security -> View update history.
+
+Download the WDK from, https://docs.microsoft.com/en-us/windows-hardware/drivers/download-the-wdk. I had used https://go.microsoft.com/fwlink/?linkid=2085767.
+
+Install the WDK. Search for devcon.exe. Mostly this should be located under "C:\ProgramFiles\Windows Kits\10\Tools\{x64/x86}". x64 worked for me.
+
+Copy devcon to the location where the batch file is present. Call the devcon as "%~dp0devcon.exe" OR the absolute path of the exe.
+
+To identify the device,
+1. 'devcon hwids *' to get all the driver information. Search through this list to identify the device ID.
+2. 'devcon resources "DEVICE_ID_FROM_ABOVE_STEP" '. If this step produced unique output, "DEVICE_ID_FROM_ABOVE_STEP" can be used as the device ID.
+3. 'devcon disable "DEVICE_ID_FROM_ABOVE_STEP" ' to disable the device.
+4. 'devcon enable "DEVICE_ID_FROM_ABOVE_STEP" ' to enable the device.
+5. 'devcon restart "DEVICE_ID_FROM_ABOVE_STEP" ' to restart device.
+
+References
+1. Disable device through batch - https://stackoverflow.com/questions/47530182/enabling-disabling-the-device-in-windows-10-from-command-line
+2. Create a task in windows - https://www.sevenforums.com/tutorials/67503-task-create-run-program-startup-log.html?ltr=T
+3. Install devcon - https://superuser.com/questions/1002950/quick-method-to-install-devcon-exe
+4. devcon device not found - https://stackoverflow.com/questions/27737232/devcon-disable-cannot-disable-device-not-found
